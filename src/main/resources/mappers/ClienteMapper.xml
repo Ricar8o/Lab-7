@@ -39,11 +39,10 @@
 </mapper>
 
 <resultMap type='Cliente' id='ClienteResult'>
-    <id property='propiedad1' column='nombe'/>
-    <result property='propiedad2' column='documento'/>
+    <id property='propiedad1' column='documento'/>
+    <result property='propiedad2' column='nombre'/>
     <result property='propiedad3' column='telefono'/> 
 	<result property='propiedad3' column='direccion'/> 
-	<result property='propiedad3' column='email'/> 
-    <association property="propiedad5" javaType="DetalleUno"></association>      
+	<result property='propiedad3' column='email'/>      
     <collection property='propiedad4' ofType='DetalleUno'></collection>
 </resultMap>
