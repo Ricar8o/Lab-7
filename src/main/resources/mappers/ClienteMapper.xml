@@ -15,7 +15,7 @@
 		c.email,
 		c.vetado,
 		
-		ir.id ,
+		ir.id as itemR_id,
 		ir.fechainiciorenta ,
 		ir.fechafinrenta ,
 		
@@ -44,14 +44,14 @@
 	<result property='direccion' column='direccion'/> 
 	<result property='email' column='email'/>  
 	<result property='vetado' column='vetado'/>    
-    <collection property='rentados' javaType='ItemRentado' resultMap='ItemRentadoResult' />
+    <collection property='rentados' javaType='ItemRentado'  column="documento" resultMap='ItemRentadoResult' />
 </resultMap>
 
 <resultMap type='ItemRentado' id='ItemRentadoResult'>
-    <id property='propiedad1' column='ir.id'/>
-    <result property='propiedad2' column='ir.fechainiciorenta'/>
-    <result property='propiedad3' column='ir.fechafinrenta'/> 
-	<association property="propiedad4" javaType="Item" resultMap='ItemsResult'></association> 
+    <id property='id' column='itemR_id'/>
+    <result property='fechainiciorenta' column='fechainiciorenta'/>
+    <result property='fechafinrenta' column='fechafinrenta'/> 
+	<association property="item" javaType="Item" column="itemR_id"  resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult" ></association>
 </resultMap>
 
 

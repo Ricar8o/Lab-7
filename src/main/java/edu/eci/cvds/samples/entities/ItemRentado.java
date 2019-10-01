@@ -7,6 +7,7 @@ package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import edu.eci.cvds.samples.entities.Item;
 
 /**
  *
@@ -21,7 +22,7 @@ public class ItemRentado implements Serializable {
     private Date fechafinrenta;
 
     public ItemRentado(int id, Item item, Date fechainiciorenta, Date fechafinrenta) {
-        this.id = id;
+		this.id = id;
         this.item = item;
         this.fechainiciorenta = fechainiciorenta;
         this.fechafinrenta = fechafinrenta;
