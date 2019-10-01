@@ -19,15 +19,15 @@
 		ir.fechainiciorenta ,
 		ir.fechafinrenta ,
 		
-		i.id ,
-		i.nombre ,
+		i.id as ite_id,
+		i.nombre as ite_nombre,
 		i.descripcion ,
 		i.fechalanzamiento ,
 		i.tarifaxdia ,
 		i.formatorenta ,
 		i.genero ,        
-		ti.id ,
-		ti.descripcion 
+		ti.id as ti_id ,
+		ti.descripcion ti_descripcion 
 
 		
 		FROM VI_CLIENTES as c 
@@ -44,14 +44,14 @@
 	<result property='direccion' column='direccion'/> 
 	<result property='email' column='email'/>  
 	<result property='vetado' column='vetado'/>    
-    <collection property='rentados' javaType='ItemRentado'  column="documento" resultMap='ItemRentadoResult' />
+    <collection property='rentados' javaType='ArrayList'  column="itemR_id" resultMap='ItemRentadoResult' />
 </resultMap>
 
 <resultMap type='ItemRentado' id='ItemRentadoResult'>
     <id property='id' column='itemR_id'/>
     <result property='fechainiciorenta' column='fechainiciorenta'/>
     <result property='fechafinrenta' column='fechafinrenta'/> 
-	<association property="item" javaType="Item" column="itemR_id"  resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult" ></association>
+	<association property="item" javaType="Item" column="ite_id"  resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemsResult" ></association>
 </resultMap>
 
 
