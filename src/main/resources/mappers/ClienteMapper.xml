@@ -8,7 +8,7 @@
 <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
 	select
 		
-		c.nombre,
+		c.nombre as cli_nombre,
 		c.documento,
 		c.telefono,
 		c.direccion,
@@ -36,13 +36,24 @@
 		left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
 </select>
           	
-</mapper>
 
-<resultMap type='Cliente' id='ClienteResult'>
-    <id property='propiedad1' column='documento'/>
-    <result property='propiedad2' column='nombre'/>
-    <result property='propiedad3' column='telefono'/> 
-	<result property='propiedad3' column='direccion'/> 
-	<result property='propiedad3' column='email'/>      
-    <collection property='propiedad4' ofType='DetalleUno'></collection>
+<resultMap type="Cliente" id="ClienteResult" >
+    <id property='documento' column='documento'/>
+    <result property='nombre' column='cli_nombre'/>
+    <result property='telefono' column='telefono'/> 
+	<result property='direccion' column='direccion'/> 
+	<result property='email' column='email'/>  
+	<result property='vetado' column='vetado'/>    
+    <collection property='rentados' javaType='ItemRentado' resultMap='ItemRentadoResult' />
 </resultMap>
+
+<resultMap type='ItemRentado' id='ItemRentadoResult'>
+    <id property='propiedad1' column='ir.id'/>
+    <result property='propiedad2' column='ir.fechainiciorenta'/>
+    <result property='propiedad3' column='ir.fechafinrenta'/> 
+	<association property="propiedad4" javaType="Item" resultMap='ItemsResult'></association> 
+</resultMap>
+
+
+
+</mapper>
